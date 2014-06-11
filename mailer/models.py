@@ -42,3 +42,7 @@ class Recipient(models.Model):
 
 	def mailAll(self):
 		pass
+
+	def __unicode__(self):
+		return self.user_email
+	
