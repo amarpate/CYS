@@ -1,6 +1,6 @@
 from django.db import models
 
-from django.core.mail import EmailMessage, EmailMultiAlternatives, get_connection
+from django.core.mail import EmailMessage, EmailMultiAlternatives, get_connection, send_mail
 from post_office import mail
 from post_office.validators import validate_email_with_name
 
@@ -20,9 +20,29 @@ class RecipientManager(models.Manager):
 			email_list.append(str(email.user_email))
 		return email_list
 
+	def get_names(self):
+		names_list = []
+		for name in self.all():
+			names_list.append([str(name.first_name),str(name.last_name)])
+		return names_list
 
-	def mailAll(self):
-		pass
+	def mail_all(self):
+		messages = []
+		email_list = self.get_emails()
+		for emailaddress in email_list:
+			email = {
+				'sender' : SENDER,
+				'recipients' : emailaddress,
+				'subject' : 'Welcome!',
+				'message' : 'Thank you for joining the CYS Community'
+			}
+			messages.append(email)
+		mail.send_many(messages)
+
+	def mail_all2(self):
+		send_mail('Welcome', 'Thank you for joining the CYS Community', SENDER, self.get_emails(),
+				fail_silently = False, auth_user='Devstein', auth_password='WTFisthis645')
+		
 
 class Recipient(models.Model):
 
