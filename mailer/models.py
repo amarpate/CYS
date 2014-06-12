@@ -9,7 +9,6 @@ from django.dispatch import receiver
 # Create your models here.
 
 SENDER = "Devstein@seas.upenn.edu"
-EMAIL_LIST = [] 
 
 class RecipientManager(models.Manager):
 	"""
@@ -20,6 +19,7 @@ class RecipientManager(models.Manager):
 		for email in self.all():
 			email_list.append(str(email.user_email))
 		return email_list
+
 
 	def mailAll(self):
 		pass
