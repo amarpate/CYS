@@ -1,14 +1,14 @@
 from django.db import models
-
 from django.core.mail import EmailMessage, EmailMultiAlternatives, get_connection, send_mail
+from django.db.models.signals import pre_delete 
+from django.dispatch import receiver
+
 from post_office import mail
 from post_office.validators import validate_email_with_name
 
-from django.db.models.signals import pre_delete 
-from django.dispatch import receiver
 # Create your models here.
 
-SENDER = "Devstein@seas.upenn.edu"
+SENDER = "campusyardsale2@gmail.com"
 
 class RecipientManager(models.Manager):
 	"""
@@ -29,20 +29,16 @@ class RecipientManager(models.Manager):
 	def mail_all(self):
 		messages = []
 		email_list = self.get_emails()
-		for emailaddress in email_list:
-			email = {
+		email = {
 				'sender' : SENDER,
-				'recipients' : emailaddress,
+				'recipients' : email_list,
 				'subject' : 'Welcome!',
 				'message' : 'Thank you for joining the CYS Community'
 			}
-			messages.append(email)
-		mail.send_many(messages)
-
-	def mail_all2(self):
-		send_mail('Welcome', 'Thank you for joining the CYS Community', SENDER, self.get_emails(),
-				fail_silently = False, auth_user='Devstein', auth_password='WTFisthis645')
-		
+		mail.send(email_list,SENDER,subject='Welcome2CYS!',
+					message='Thank you for joining the CYS Community',
+					priority='now')
+					
 
 class Recipient(models.Model):
 
