@@ -51,6 +51,6 @@ class Recipient(models.Model):
 	def __unicode__(self):
 		return self.user_email
 	
-	recipients = RecipientManager() 
+	objects = RecipientManager() 
 
 	
