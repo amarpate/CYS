@@ -24,7 +24,7 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['www.CampusYardsale.com' , 'CampusYardsale.com', ]
 
 
 # Application definition
@@ -64,6 +64,7 @@ DATABASES = {
         'NAME': 'cys',
         'USER': 'root',
         'PASSWORD' : 'kaia',
+        'STORAGE_ENGINE' : 'INNODB'
     }
 }
 
