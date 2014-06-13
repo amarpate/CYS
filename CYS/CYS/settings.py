@@ -36,7 +36,6 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'post_office',
     'mailer',
     'south',
 )
@@ -68,7 +67,6 @@ DATABASES = {
     }
 }
 
-MAIL_BACKEND = 'post_office.EmailBackend'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'campusyardsale2@gmail.com'
