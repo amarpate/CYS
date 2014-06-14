@@ -1,7 +1,6 @@
 from django.db import models
 from django.core.mail import send_mail
-from django.db.models.signals import pre_delete 
-from django.dispatch import receiver
+from django.utils.encoding import smart_unicode
 
 
 # Create your models here.
@@ -25,7 +24,6 @@ class RecipientManager(models.Manager):
 		return names_list
 
 	def mail_all(self):
-		messages = []
 		email_list = self.get_emails()
 		mail.send_mail('Welcome!', 'Thank you for joining the CYS Community!', 
 						SENDER, email_list)
@@ -35,11 +33,11 @@ class Recipient(models.Model):
 	first_name = models.CharField(max_length=30)
 	last_name = models.CharField(max_length=30)
 	user_email = models.EmailField(max_length=254)
-	created = models.DateTimeField(auto_now_add=True, db_index=True)
+	created = models.DateTimeField(auto_now_add=True, auto_now=False, db_index=True)
 	
 
 	def __unicode__(self):
-		return self.user_email
+		return smart_unicode(self.user_email)
 	
 	objects = RecipientManager() 
 
