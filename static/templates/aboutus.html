@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block jumbotron %}
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <h1>About us</h1>
+        <p>Campus Yard Sale is an online communal marketplace to buy and sell things with your classmates. Textbooks, electronics, and furniture are just a few of the things you can buy! No more searching for used textbooks online, dealing with people you don’t know, or paying outrageous shipping fees. With CYS you are dealing with people from YOUR college or university from the safety and convenience of your campus. Going abroad for a semester and want to rent out your apartment? Post about it on your school’s page and find a new tenant. On Campus Yard Sale, the possibilities are endless as to what you can buy, sell, and trade. Our goal is to be on every campus across the country, and help make the lives of college students just a little easier!</p>
+        <p><a class="btn btn-primary btn-lg" role="button" href="{% url 'home' %}">Sign Up! &raquo;</a></p>
+      </div>
+    </div>
+
+{% endblock %}
+
+{% block content %}
+<div class="container">
+      <!-- Example row of columns -->
+    <div class="row">
+    	<div class=col-sm-12>
+    		<h1 style="text-decoration:underline">Who we are</h2>
+    	</div>
+	</div>
+    <div class="row">
+        <div class="col-sm-4">
+          <h2>Harry Rosenberg</h2>
+          <h4>CEO and Founder</h4>
+          <p>Harry is a student at Vanderbilt University where is an intended entrepreneurial economics major. Harry is a Haverford School graduate where he was a member of the Lacrosse team, Captain of the Winter Track Team, and the Leader of the Red Cross Blood Drive.</p>
+        </div>
+        <div class="col-sm-4">
+          <h2>Peter Blynn</h2>
+          <h4>President and Co-Founder</h4>       
+          <p>Peter is a member of the Men’s Lacrosse Team at Harvard University and intends to major in Economics or Computer Science. He is a Haverford School graduate where he was class President and captain of the Lacrosse team.</p>
+       </div>
+        <div class="col-sm-4">
+          <h2>Carlo deMarco</h2>
+          <h4>Vice President and Co-Founder</h4>
+          <p>Carlo is a member of the Men’s Soccer Team at UMass Amherst and majors is Sports Management and Marketing. He is a Haverford School Graduate where he was captain of the Soccer team and leader of the Community Awareness program.</p>
+        </div>
+    </div>
+
+     <div class="row">
+        <div class="col-sm-6">
+          <h2>Amar Patel</h2>
+          <h4>Cheif Digital Officer</h4>
+          <p>Amar is a Computational Biology major at the University of Pennsylvania. He is a Haverford School graduate where he was president of the school’s Service board and DECA Chapter.</p>
+        </div>
+        <div class="col-sm-6">
+          <h2>Devin Stein</h2>
+          <h4>Chief Technology Officer</h4>
+          <p>Devin is a Computer Science Engineering Major at the University of Pennsylvania. He is a Miramonte High School graduate where he served as chair of the Orinda Teen Advisory Council and played four years of Varsity Tennis.</p>
+       </div>
+    </div>
+</div> 
+
+
+{% endblock %}
